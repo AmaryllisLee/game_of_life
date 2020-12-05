@@ -44,3 +44,26 @@ class TestSimulator(TestCase):
         self.sim.set_world(world)
         self.assertIsInstance(self.sim.get_world(), World)
         self.assertIs(self.sim.get_world(), world)
+    
+    def test_survival_of_the_cell(self):
+        #TODO figure out if cell is already dead or alive
+        #check if cell has 0 to 1 neighbour and cell is dead
+        self.assertEqual(self.sim.survival_of_the_cell(0), 0)
+        self.assertEqual(self.sim.survival_of_the_cell(1), 0)
+
+        #check if cell has 4 or  more neigbours and cell is dead
+        self.assertEqual(self.sim.survival_of_the_cell(4),0)
+        self.assertEqual(self.sim.survival_of_the_cell(5),0)
+        self.assertEqual(self.sim.survival_of_the_cell(6),0)
+        self.assertEqual(self.sim.survival_of_the_cell(7),0)
+        self.assertEqual(self.sim.survival_of_the_cell(8),0)
+
+        #check if cell has  2 or 3 neihbours and cell is alive
+        self.assertEqual(self.sim.survival_of_the_cell(2),1)
+        self.assertEqual(self.sim.survival_of_the_cell(3),1)
+
+
+    # def test_transition_rules(self):
+    #     """
+    #     Test whether a cell follows the 4 "normal" rules of Game of Life 
+    #     """
