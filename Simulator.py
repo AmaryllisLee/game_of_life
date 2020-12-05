@@ -16,9 +16,22 @@ class Simulator:
         if world == None:
             self.world = World(20)
         else:
-            self.world = world
+            self.world = world   
 
-    def update(self) -> World:
+    def transition_rules(self):
+        pass
+    def survival_of_the_cell(self,n_a):
+        """
+        check if a cells is dead or alive based on the 4 rules
+        :param n_a: de amount of alive neighbours a cell has
+        :return: 0 (dead) or 1 (alive)
+        """
+        if n_a == 2 or n_a == 3:
+            return 1
+        return 0
+
+
+    def update(self) -> World: # set_generation
         """
         Updates the state of the world to the next generation. Uses rules for evolution.
 
@@ -27,7 +40,9 @@ class Simulator:
         self.generation += 1
 
         #TODO: Do something to evolve the generation
-
+        #transition_rules(self)
+    
+        
         return self.world
 
     def get_generation(self):
@@ -54,3 +69,4 @@ class Simulator:
 
         """
         self.world = world
+    
