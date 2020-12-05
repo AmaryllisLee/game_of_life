@@ -34,7 +34,7 @@ class World:
 
     def set(self, x: int, y: int, value:int = 1) -> None:
         """
-        Sets the state of ``(x, y)`` to the given value.
+        Sets the state of ``(x, y)`` to the given value. => cell is dead or alive
 
         :param x: column-value of the location.
         :param y: row-value of the location.

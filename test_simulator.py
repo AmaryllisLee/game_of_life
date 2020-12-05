@@ -46,24 +46,25 @@ class TestSimulator(TestCase):
         self.assertIs(self.sim.get_world(), world)
     
     def test_survival_of_the_cell(self):
+        """
+        Test whether the object is called from survival_of_the_cell,is dead or alive based on its amount of alive neighbours.
+        """
         #TODO figure out if cell is already dead or alive
         #check if cell has 0 to 1 neighbour and cell is dead
-        self.assertEqual(self.sim.survival_of_the_cell(0), 0)
-        self.assertEqual(self.sim.survival_of_the_cell(1), 0)
-
+        self.assertEqual([0,0,0,0,0,0,0,0], 0)
+        self.assertEqual([0,1,0,0,0,0,0,0], 0)
+    
         #check if cell has 4 or  more neigbours and cell is dead
-        self.assertEqual(self.sim.survival_of_the_cell(4),0)
-        self.assertEqual(self.sim.survival_of_the_cell(5),0)
-        self.assertEqual(self.sim.survival_of_the_cell(6),0)
-        self.assertEqual(self.sim.survival_of_the_cell(7),0)
-        self.assertEqual(self.sim.survival_of_the_cell(8),0)
+        self.assertEqual([1,1,1,1,0,0,1,0], 0)
 
         #check if cell has  2 or 3 neihbours and cell is alive
-        self.assertEqual(self.sim.survival_of_the_cell(2),1)
-        self.assertEqual(self.sim.survival_of_the_cell(3),1)
+        self.assertEqual([0,1,0,1,0,0,0,0], 1)
+        self.assertEqual([0,1,0,1,0,0,1,0], 1)
+     
+     
+
+#TODO
+# def test_evolve_generation(self):
+#     pass
 
 
-    # def test_transition_rules(self):
-    #     """
-    #     Test whether a cell follows the 4 "normal" rules of Game of Life 
-    #     """
