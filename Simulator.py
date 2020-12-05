@@ -26,21 +26,23 @@ class Simulator:
         :param n_a: de amount of alive neighbours a cell has
         :return: 0 (dead) or 1 (alive)
         """
-        if sum(n_a) == 2 or sum(n_a) == 3:
+        if sum(n_a) == 2 or sum(n_a) == 3: # if there are 2 or 3 neigbours,then the cell is alive. Otherwis it is dead.
             return 1
         return 0
     
     def evolve_generation(self):
-
+        """
+        In this function the stae of the world would change based on the "normal" rules of Game Life
+        """
         # make a deep copy ofth current world
         # Source: https://www.programiz.com/python-programming/shallow-deep-copy#:~:text=help%20of%20examples.-,Copy%20an%20Object%20in%20Python,reference%20of%20the%20original%20object.
         new_world = copy.deepcopy(self.world)
     
         for i in range(0,self.get_world().width):
             for j in range(0,self.get_world().height):
-                a_n = self.get_world().get_neighbours(i,j)
-                new_world.set(i,j, self.survival_of_the_cell(a_n))
-        self.set_world(new_world)
+                a_n = self.get_world().get_neighbours(i,j) # get all the values of the 8 neigbours of specific cel (at position (i,j))
+                new_world.set(i,j, self.survival_of_the_cell(a_n)) # change the values of the cells with the values calculated via the function survival_of_the_cells
+        self.set_world(new_world) #change the current world to new_world
         return(self.world)
 
 
@@ -54,7 +56,7 @@ class Simulator:
 
         #TODO: Do something to evolve the generation
         #transition_rules(self)
-        self.evolve_generation()
+        self.evolve_generation() #update world
     
         
         return self.world

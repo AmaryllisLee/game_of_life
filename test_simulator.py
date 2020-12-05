@@ -63,8 +63,3 @@ class TestSimulator(TestCase):
      
      
 
-#TODO
-# def test_evolve_generation(self):
-#     pass
-
-
